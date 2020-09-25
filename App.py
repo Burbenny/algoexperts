@@ -5,7 +5,7 @@ logger = logging.getLogger(__name__)
 
 @app.route('/', methods=['GET'])
 def default_route():
-    return "Python Template";
+    return "Welcome to the Page of the ALGO EXPERTS";
 
 
 logger = logging.getLogger()

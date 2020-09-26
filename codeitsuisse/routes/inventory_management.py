@@ -8,7 +8,7 @@ from codeitsuisse import app;
 logger = logging.getLogger(__name__)
 
 # edit this function to include the operations
-@lru_cache(maxsize=2**12)
+@lru_cache(maxsize=2**11)
 def minDistanceEdit(word1, word2):
     if not word1 and not word2:
         return [0,""]

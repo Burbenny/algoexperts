@@ -15,7 +15,7 @@ def geometry_eval():
     lineCoordinates = data.get("lineCoordinates")
     result = geometry_solve(shapeCoordinates,lineCoordinates)
     logging.info("My result :{}".format(result))
-    return json.dumps(result)
+    return jsonify(result)
 
 #shapCoordinates is a array of dictionary, each dict is a pair of coordinates, all linked to form a shape
 #lineCoordinates is a array of dictoinary, each dict is a pair of coordinates, each pair is a line 

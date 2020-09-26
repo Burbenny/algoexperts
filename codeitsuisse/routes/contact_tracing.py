@@ -33,7 +33,7 @@ def compareStrings(str1, str2):
 
     return dif, isNonSilent
 
-@app.route('/contact-tracing', methods=['POST'])
+@app.route('/contact_trace', methods=['POST'])
 def evaluateContactTracing():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))

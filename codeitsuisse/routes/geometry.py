@@ -115,12 +115,12 @@ def helper_get_intersect(a1,m1,c1,a2,m2,c2,x1,y1,x2,y2):
         y= (m1*x + c1)/a1
 
     if (x2 <= x <= x1) or (x1 <= x <= x2) :
-        intercept['x']= x
+        intercept['x']= round(x,2)
     else:
         return {}
 
     if (y2 <= y <= y1) or (y1 <= y <= y2) :
-        intercept['y']= y
+        intercept['y']= round(y,2)
     else:
         return {}
     return intercept

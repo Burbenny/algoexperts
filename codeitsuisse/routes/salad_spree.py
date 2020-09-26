@@ -21,28 +21,31 @@ def evaluateSaladSpree():
 
     for street in streetMap:
         streetIdx = 0
+        # 0 -2 out of 5
         while streetIdx <= (len(street)-n):
 
 
 
-            # Check if any value in the n-window == "X"
+            #Check if any value in the n-window == "X"
+            moveToNextIdx = False
             for checkX in reversed(range(n)):
                 toCheck = streetIdx + checkX
                 if toCheck > len(street)-1:
                     continue
                 elif street[toCheck] == "X":
                     streetIdx += checkX+1
+                    moveToNextIdx = True
                     break
 
-            if streetIdx + n > len(street)-1:
+            if streetIdx + n-1 > len(street)-1 or moveToNextIdx:
                 break
 
             neighbourSum = 0
+            print("street", street)
             for k in range(streetIdx, streetIdx + n ):
                 print("im here")
                 neighbourSum += int(street[k])
 
-            print('neighbour sum is ', neighbourSum)
             if neighbourSum < res:
                 res = neighbourSum
 

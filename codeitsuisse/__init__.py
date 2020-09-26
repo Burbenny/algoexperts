@@ -8,6 +8,7 @@ import codeitsuisse.routes.contact_tracing
 import codeitsuisse.routes.social_distancing
 import codeitsuisse.routes.cluster
 import codeitsuisse.routes.optimized_portfolio
+import codeitsuisse.routes.olympiad
 
 
 

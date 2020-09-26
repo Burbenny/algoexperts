@@ -46,7 +46,7 @@ def geometry_solve(shapeCoordinates, lineCoordinates):
         #eqn of the line between the two coordinates
         a2,m2,c2 =helper_line_eqn(x1,y1,x2,y2)
         temp = helper_get_intersect(a,m,c,a2,m2,c2,x1,y1,x2,y2)
-        if not bool(temp):
+        if bool(temp):
             sol.append(temp)
         return sol
     # if n >=3
@@ -63,8 +63,9 @@ def geometry_solve(shapeCoordinates, lineCoordinates):
 
         a2,m2,c2 =helper_line_eqn(x1,y1,x2,y2)
  
-    
+ 
         temp = helper_get_intersect(a,m,c,a2,m2,c2,x1,y1,x2,y2)
+
         if bool(temp):
             sol.append(temp)
 

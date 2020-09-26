@@ -8,23 +8,7 @@ from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
 
-# @lru_cache()
-# def knapsack(books,time,cache={}):
-#     books=list(books)
-#     if time==0:
-#         return (time,tuple(books))
-
-#     book_arr=[]
-#     overflow=True
-#     for i in range(len(books)):
-#         if time-books[i]>=0:
-#             overflow=False
-#             book_arr.append(knapsack(tuple(books[:i]+books[i:]),time-books[i]))
-#     if overflow:
-#         return (time,tuple(books))
-#     # if all too big return books, get minum remainder
-#     return min(book_arr,key=lambda x:x[0])
-
+import itertools
 def knapsack(books,time):
     if time==0:
         return [0,books]
@@ -45,19 +29,23 @@ def evaluate_olympiad():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
     books = data.get("books");
-    days = data.get("days");
+    days_og = data.get("days");
     n_books=len(books)
     # n_days=len(days)
-    res=0
     book_shelf=books
     len_bs=len(book_shelf)
-    for time in days:
-        _,book_shelf=knapsack(book_shelf,time)
-        print(book_shelf)
-        res+=len_bs-len(book_shelf)
-        len_bs=len(book_shelf)
+    day_lists=list(itertools.permutations(days_og))
+    outputs=[]
+    for days in day_lists:
+        res=0
+        for time in days:
+            _,book_shelf=knapsack(book_shelf,time)
+            res+=len_bs-len(book_shelf)
+            len_bs=len(book_shelf)
+        outputs.append(res)
+    
 
 
-    result={"optimalNumberOfBooks": res}
+    result={"optimalNumberOfBooks": max(outputs)}
     logging.info("My result :{}".format(result))
     return json.dumps(result);

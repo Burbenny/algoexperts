@@ -32,12 +32,10 @@ def minDistance(word1, word2,cache ={}):
 
 @app.route('/inventory-management', methods=['POST'])
 def evaluate_inventory_management():
-    data = request.get_json();
+    data = request.get_json(force=True);
     logging.info("data sent for evaluation {}".format(data))
-    inputValue = data.get("input");
-    # result = inputValue * inputValue
-    search = inputValue[0]["searchItemName"]
-    items = inputValue[0]["items"]
+    search = data[0].get("searchItemName")
+    items = data[0].get('items')
     res=[]
     for item in items:
         res.append(minDistance(search,item))

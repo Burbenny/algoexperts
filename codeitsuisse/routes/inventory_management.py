@@ -8,7 +8,7 @@ from codeitsuisse import app;
 logger = logging.getLogger(__name__)
 
 # edit this function to include the operations
-@lru_cache(maxsize=2**15)
+@lru_cache(maxsize=2**12)
 def minDistanceEdit(word1, word2):
     if not word1 and not word2:
         return [0,""]
@@ -66,6 +66,7 @@ def evaluate_inventory_management():
         result.append({"searchItemName":search,"searchResult":final})
     logging.info("My result :{}".format(result))
     return json.dumps(result);
+
 
 # if __name__ == "__main__":
 #     print(evaluate_inventory_management([{"searchItemName":"Samsung Aircon","items":["Smsng Auon","Amsungh Aircon","Samsunga Airon"]}])) # 5,2,2
